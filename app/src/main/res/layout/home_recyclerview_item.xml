@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="post"
+            type="com.darwin.photolandhk.posts.PostContent" />
+
+        <variable
+            name="isHomeOverview"
+            type="Boolean" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/news_item_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorHomeWhiteCardBackground"
+        app:cardCornerRadius="0dp"
+        app:cardUseCompatPadding="false"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp">
+
+            <ImageView
+                android:id="@+id/news_recyclerview_imageView"
+                android:layout_width="160dp"
+                android:layout_height="90dp"
+                android:adjustViewBounds="false"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{post.featured_image_src}"
+                app:overview="@{isHomeOverview}"
+                tools:srcCompat="@drawable/cshine_942x135" />
+
+            <TextView
+                android:id="@+id/news_recyclerview_title"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/news_recyclerview_imageView"
+                android:ellipsize="end"
+                android:lines="2"
+                android:maxLines="2"
+                android:paddingStart="2dp"
+                android:paddingTop="4dp"
+                android:textColor="@color/colorHomeDarkCardBackground"
+                android:textSize="13sp"
+                app:text="@{post.title.rendered}"
+                tools:text="Yongnuo 推出具有自動對焦功能的全片幅 35mm f / 2 Sony E mount 鏡頭" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

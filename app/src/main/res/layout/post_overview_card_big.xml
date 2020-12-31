@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="post"
+            type="com.darwin.photolandhk.posts.PostContent" />
+
+        <variable
+            name="datePublished"
+            type="String" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="0dp">
+
+            <ImageView
+                android:id="@+id/news_card_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{post.featured_image_src}"
+                tools:src="@drawable/logo_only_scaled"/>
+
+            <LinearLayout
+                android:id="@+id/info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/news_card_image"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal"
+                android:textColor="#767676"
+                android:textSize="12sp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_person" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:textSize="12sp"
+                    app:text="@{post.author_info.display_name}"
+                    tools:text="Perry Yu" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_clock" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="@{datePublished}"
+                    android:textSize="12sp"
+                    tools:text="2天 前發佈" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/news_card_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/info"
+                android:layout_marginTop="2dp"
+                android:paddingHorizontal="5dp"
+                android:paddingBottom="6dp"
+                android:textColor="@color/colorTitle"
+                android:textSize="16sp"
+                app:text="@{post.title.rendered}"
+
+                tools:text="Yongnuo 推出具有自動對焦功能的全片幅 35mm f / 2 Sony E mount 鏡頭" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

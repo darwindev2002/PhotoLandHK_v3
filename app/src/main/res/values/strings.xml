@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">PhotoLandHK</string>
+    <string name="title_home">主頁</string>
+    <string name="title_news">攝影大事報</string>
+    <string name="title_report">真．用家報告</string>
+    <string name="title_library">產品檔案室</string>
+    <string name="title_discussion">攝影齊齊傾</string>
+    <string name="title_events">活動報名站</string>
+    <string name="title_youtube">YouTube</string>
+    <string name="title_settings">設定</string>
+    <string name="more">查看更多</string>
+    <string name="filter_all">全部文章</string>
+    <string name="youtube_filter_latest">最新影片</string>
+    <string name="youtube_filter_review">真．用家報告</string>
+    <string name="youtube_filter_broadcast">直播 LIVE</string>
+    <string name="content_description_laowa_ad_banner">Ad banner of Laowa, click here to link to laowa.com</string>
+
+    <string name="connection_timed_out">網路連線逾時！</string>
+    <string name="connection_failed">網路連線失敗，請檢查網路！</string>
+    <string name="connection_error">伺服器問題，請稍後再試！</string>
+
+    <string-array name="posts_filter">
+        <item>@string/filter_all</item>
+        <item>@string/title_news</item>
+        <item>@string/title_report</item>
+        <item>@string/title_discussion</item>
+    </string-array>
+
+    <string-array name="youtube_filter">
+        <item>@id/nav_youtube_latest</item>
+        <item>@id/nav_youtube_review</item>
+        <item>@id/nav_youtube_broadcasts</item>
+    </string-array>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>

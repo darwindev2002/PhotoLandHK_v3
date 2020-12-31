@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.darwin.photolandhk.post.PostViewModel" />
+        <variable
+            name="datePublished"
+            type="String" />
+        <variable
+            name="isAuthorThumbnail"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/post"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".post.PostContentActivity"
+        android:background="#FFFFFF">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/titleToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:gravity="end"
+            app:contentInsetStart="0dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginEnd="1dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    app:srcCompat="@drawable/ic_back" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:isScrollContainer="false"
+                android:orientation="vertical">
+
+<!--                <ImageView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:scaleType="fitStart"-->
+<!--                    app:imageUrl="@{viewModel.selectedPost.featured_image_src}"-->
+<!--                    tools:srcCompat="@drawable/yongnuo_35_2_e_mount_af" />-->
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    app:text="@{viewModel.selectedPost.title.rendered}"
+                    tools:text="This is title."
+                    android:layout_marginBottom="5dp"
+                    android:textSize="16sp"
+                    android:textColor="#303336"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="12dp"
+                        android:layout_marginEnd="5dp"
+                        app:cardElevation="0dp"
+                        >
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            app:imageUrl="@{viewModel.theAuthorThumbnailURL}"
+                            app:isAuthorThumbnail="@{isAuthorThumbnail}"
+                            tools:srcCompat="@tools:sample/avatars" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewModel.selectedPost.author_info.display_name}"
+                        tools:text="ArLing"
+                        android:layout_marginEnd="3dp"
+                        android:textColor="#353535"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" · "
+                        android:textStyle="bold"
+                        android:layout_marginEnd="3dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:text="@{datePublished}"
+                        tools:text="2天前發佈"
+                        android:textColor="#404040"/>
+                </LinearLayout>
+
+                <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:postContent="@{viewModel.selectedPost.content.rendered}"
+                    tools:text="This is content." />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/status_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:apiStatus="@{viewModel.status}"
+            android:scaleType="centerInside" />
+
+    </LinearLayout>
+
+</layout>
