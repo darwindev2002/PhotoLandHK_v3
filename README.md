@@ -22,15 +22,15 @@ In this app you can view:
 ## Screenshots
 Home page
 
-![Home Page Sample Image](images/homePageSample.png)
+![Home Page Sample Image](images/homePage.png)
 
-Report Overview Page
+Navigation Menu
 
-![Report Page Sample Image](images/reportPageSample.png)
+![Navigation Menu Sample Image](images/navigationMenu.png)
 
 News Overview Page
 
-![News Page Sample Image](images/newsPageSample.png)
+![News Page Sample Image](images/newsPage.png)
 	
 ## Technologies
 Project is created with:
