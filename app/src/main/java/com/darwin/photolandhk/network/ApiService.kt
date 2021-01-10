@@ -5,6 +5,7 @@ import com.darwin.photolandhk.posts.Category
 import com.darwin.photolandhk.posts.CategoryCount
 import com.darwin.photolandhk.posts.PostContent
 import com.darwin.photolandhk.posts.Thumbnail
+import com.darwin.photolandhk.product_library.ProductSimple
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.*
@@ -23,7 +24,12 @@ enum class ApiFilter(val value: String?) {
     SHOW_DISCUSSION("攝影齊齊傾")
 }
 
-private val BASE_URL = "https://photolandhk.com/"
+//private val BASE_URL = "https://photolandhk.com/"
+private val BASE_URL = "https://cshinestaging2.wpengine.com/"
+
+var PRODUCT_PERPAGE = 30
+
+lateinit var product_categories: List<String>
 
 object PostCountCallable {
     var count = 0
@@ -110,6 +116,18 @@ interface ApiService {
         @Path("id") id: Int = 7,
         @Query("_fields") fields: String = "avatar_urls"
     ): Thumbnail
+
+    @GET("wp-json/ap/v1/search")
+    suspend fun getProductList(
+        @Query("filters") filters: String = "category.lens",
+        @Query("page") page: Int = 1
+    ): List<ProductSimple>
+
+    @GET("wp-json/ap/v1/perpage")
+    suspend fun getProductPerPage(): Int
+
+    @GET("wp-json/ap/v1/count")
+    suspend fun getProductCount(): Int
 
 }
 

@@ -22,13 +22,16 @@ import com.darwin.photolandhk.main_fragments.home.HomeOverviewAdapter
 import com.darwin.photolandhk.network.ApiStatus
 import com.darwin.photolandhk.posts.PostContent
 import com.darwin.photolandhk.posts_overview.PostsOverviewAdapter
+import com.darwin.photolandhk.product_library.ProductAdapter
+import com.darwin.photolandhk.product_library.ProductSimple
 
-@BindingAdapter("imageUrl", "overview", "isAuthorThumbnail", requireAll = false)
+@BindingAdapter("imageUrl", "overview", "isAuthorThumbnail", "isProductThm", requireAll = false)
 fun bindImage(
     imgView: ImageView,
     imgUrl: String?,
     isHomeOverview: Boolean = false,
-    isAuthorThumbnail: Boolean = false
+    isAuthorThumbnail: Boolean = false,
+    isProductThm: Boolean = false,
 ) {
     imgUrl?.let {
 //        val requestOptions = when {
@@ -36,8 +39,11 @@ fun bindImage(
 //            isAuthorThumbnail -> RequestOptions().override(48,48)
 //            else -> RequestOptions().override(360, 180)
 //        }
-        val reqOpt = RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-            .override(imgView.width/2, imgView.height/2).priority(Priority.IMMEDIATE)
+        val reqOpt =
+            if (isProductThm) RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .override(300, 300).priority(Priority.IMMEDIATE)
+            else RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .override(imgView.width / 2, imgView.height / 2).priority(Priority.IMMEDIATE)
         Glide.with(imgView.context)
             .load(it)
             .transition(DrawableTransitionOptions.withCrossFade())
@@ -79,13 +85,13 @@ fun bindRecyclerViewTitle(card: CardView, title: String) {
 }
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<PostContent>?) {
+fun <T> bindRecyclerView(recyclerView: RecyclerView, data: List<T>?) {
     when (recyclerView.adapter) {
-        is HomeOverviewAdapter -> (recyclerView.adapter as HomeOverviewAdapter).submitList(data)
-        is PostsOverviewAdapter -> (recyclerView.adapter as PostsOverviewAdapter).submitList(data)
+        is HomeOverviewAdapter -> (recyclerView.adapter as HomeOverviewAdapter).submitList(data as List<PostContent>?)
+        is PostsOverviewAdapter -> (recyclerView.adapter as PostsOverviewAdapter).submitList(data as List<PostContent>?)
 //        is ReportOverviewAdapter -> (recyclerView.adapter as ReportOverviewAdapter).submitList(data)
 //        is NewsOverviewAdapter -> (recyclerView.adapter as NewsOverviewAdapter).submitList(data)
-        else -> null
+        is ProductAdapter -> (recyclerView.adapter as ProductAdapter).submitList(data as List<ProductSimple>?)
     }
 }
 

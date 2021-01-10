@@ -17,6 +17,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.darwin.photolandhk.post.PostContentActivity
 import com.darwin.photolandhk.posts.PostContent
 import com.darwin.photolandhk.posts_overview.PostsOverviewActivity
+import com.darwin.photolandhk.product_library.ProductLibraryActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView

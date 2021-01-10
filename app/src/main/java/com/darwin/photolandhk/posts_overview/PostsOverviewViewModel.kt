@@ -34,7 +34,6 @@ class PostsOverviewViewModel(private val progressBar: ProgressBar, private val r
             progressBar.visibility = VISIBLE
             try {
                 val count = PostCountCallable.getCount(categoryList[filter.value])
-                println("-----$count-----${filter.value}-----$gotPosts")
                 if (isInit) {
                     _posts.value =
                         if (filter == ApiFilter.SHOW_ALL) Api.retrofitService.getAllPostList() as MutableList
@@ -42,7 +41,6 @@ class PostsOverviewViewModel(private val progressBar: ProgressBar, private val r
                     recyclerView.adapter?.notifyDataSetChanged()
                 } else if (count > gotPosts) {
                     // Only do request if there are still posts left
-                    println("-----${nextPage()}")
                     _posts.value?.addAll(
                         if (filter == ApiFilter.SHOW_ALL) Api.retrofitService.getAllPostList(page = nextPage())
                         else Api.retrofitService.getPostList(page = nextPage(), category = categoryList[filter.value]!!)

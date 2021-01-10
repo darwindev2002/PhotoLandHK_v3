@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="product"
+            type="com.darwin.photolandhk.product_library.ProductSimple" />
+        <variable
+            name="thm"
+            type="String" />
+        <variable
+            name="isProduct"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="0dp">
+
+            <ImageView
+                android:id="@+id/news_card_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{thm}"
+                app:isProductThm="@{isProduct}"
+                tools:src="@drawable/logo_only_scaled"
+                android:contentDescription="@string/product_thumbnail"/>
+
+            <LinearLayout
+                android:id="@+id/info"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_alignParentTop="true"
+                android:padding="20dp"
+                android:layout_toEndOf="@id/news_card_image"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:textColor="#767676"
+                android:textSize="12sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    app:text="@{product.post_title}"
+                    tools:text="SAMYANG MF 85mm f/1.4 RF"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

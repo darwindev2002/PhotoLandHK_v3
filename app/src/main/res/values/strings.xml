@@ -19,6 +19,9 @@
     <string name="connection_failed">網路連線失敗，請檢查網路！</string>
     <string name="connection_error">伺服器問題，請稍後再試！</string>
 
+    <string name="product_thumbnail">產品縮圖</string>
+    <string name="api_status">API讀取狀態</string>
+
     <string-array name="posts_filter">
         <item>@string/filter_all</item>
         <item>@string/title_news</item>
