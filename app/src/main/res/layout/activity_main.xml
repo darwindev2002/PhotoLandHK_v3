@@ -13,37 +13,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/titleToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:gravity="end"
-            app:contentInsetStart="0dp" />
-
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nested_scroll_view"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/titleToolbar"
-            android:layout_marginTop="?attr/actionBarSize"
-            android:clipToPadding="false">
+            android:orientation="vertical">
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/main_viewpager"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/titleToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                android:gravity="end"
+                app:contentInsetStart="0dp" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nested_scroll_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/titleToolbar"
-                android:nestedScrollingEnabled="false" />
+                android:layout_marginBottom="?attr/actionBarSize"
+                android:clipToPadding="false"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        </androidx.core.widget.NestedScrollView>
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/main_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/titleToolbar"
+                    android:nestedScrollingEnabled="false" />
+
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            app:hideOnScroll="true">
+            app:hideOnScroll="false">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation"
@@ -61,7 +68,8 @@
             android:contentDescription="@string/title_library"
             app:layout_anchor="@id/bottom_app_bar"
             app:srcCompat="@drawable/ic_library"
-            app:backgroundTint="@color/colorAccent"/>
+            app:backgroundTint="@color/colorAccent"
+            android:id="@+id/btn_product_library"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

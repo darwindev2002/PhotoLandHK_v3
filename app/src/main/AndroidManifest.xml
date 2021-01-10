@@ -12,11 +12,16 @@
         android:roundIcon="@drawable/logo_only"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".ProductLibraryActivity"
+            android:label="@string/title_activity_product_library"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".post.PostContentActivity" />
         <activity android:name=".posts_overview.PostsOverviewActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

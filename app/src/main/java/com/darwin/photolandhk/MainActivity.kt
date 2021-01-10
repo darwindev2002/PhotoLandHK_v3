@@ -18,6 +18,7 @@ import com.darwin.photolandhk.post.PostContentActivity
 import com.darwin.photolandhk.posts.PostContent
 import com.darwin.photolandhk.posts_overview.PostsOverviewActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,BottomNavigationView.OnNavigationItemSelectedListener {
@@ -67,6 +68,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 
             }
         })
+
+        val floatingBtn: FloatingActionButton = findViewById(R.id.btn_product_library)
+        floatingBtn.setOnClickListener { startProductLibraryActivity() }
 
     }
 
@@ -128,6 +132,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val intent = Intent(this, PostContentActivity::class.java).apply {
             putExtra(MESSAGE.POST.value, post)
         }
+        startActivity(intent)
+    }
+
+    fun startProductLibraryActivity() {
+        val intent = Intent(this, ProductLibraryActivity::class.java)
         startActivity(intent)
     }
 
