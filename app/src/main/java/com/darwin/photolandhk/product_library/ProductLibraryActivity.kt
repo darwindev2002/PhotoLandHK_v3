@@ -2,6 +2,7 @@ package com.darwin.photolandhk.product_library
 
 //import com.darwin.photolandhk.ui.main.SectionsPagerAdapter
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.darwin.photolandhk.R
@@ -34,5 +35,8 @@ class ProductLibraryActivity : AppCompatActivity() {
                 else -> "TBD"
             }
         }.attach()
+
+        val back_btn: ImageButton = findViewById(R.id.btn_back)
+        back_btn.setOnClickListener { onBackPressed() }
     }
 }
