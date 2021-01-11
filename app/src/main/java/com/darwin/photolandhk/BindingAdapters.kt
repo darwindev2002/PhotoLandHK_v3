@@ -24,6 +24,7 @@ import com.darwin.photolandhk.posts.PostContent
 import com.darwin.photolandhk.posts_overview.PostsOverviewAdapter
 import com.darwin.photolandhk.product_library.ProductAdapter
 import com.darwin.photolandhk.product_library.ProductSimple
+import com.darwin.photolandhk.product_library.Thumb
 
 @BindingAdapter("imageUrl", "overview", "isAuthorThumbnail", "isProductThm", requireAll = false)
 fun bindImage(
@@ -46,6 +47,23 @@ fun bindImage(
                 .override(imgView.width / 2, imgView.height / 2).priority(Priority.IMMEDIATE)
         Glide.with(imgView.context)
             .load(it)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .apply(reqOpt)
+            .placeholder(R.drawable.logo_only_scaled).error(R.drawable.ic_broken_image_scaled)
+            .into(imgView)
+    }
+}
+
+@BindingAdapter("productThumb")
+fun bindProductThumb(
+    imgView: ImageView,
+    productThumb: Thumb?,
+) {
+    productThumb?.let {
+        val reqOpt = RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .override(300, 300).priority(Priority.IMMEDIATE)
+        Glide.with(imgView.context)
+            .load(it.url.substring(0, it.url.length-4)+"-300x300.png")
             .transition(DrawableTransitionOptions.withCrossFade())
             .apply(reqOpt)
             .placeholder(R.drawable.logo_only_scaled).error(R.drawable.ic_broken_image_scaled)

@@ -15,8 +15,6 @@ class ProductAdapter(private val onClickListener: OnClickListener) : ListAdapter
             RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ProductSimple) {
             binding.product = item
-            binding.thm = "https://photolandhk.com/wp-content/uploads/2021/01/Samyang-XP-14mm-2.4-300x300.png"
-            binding.isProduct = true
         }
     }
 //
@@ -26,7 +24,7 @@ class ProductAdapter(private val onClickListener: OnClickListener) : ListAdapter
 
     companion object DiffCallback : DiffUtil.ItemCallback<ProductSimple>() {
         override fun areContentsTheSame(oldItem: ProductSimple, newItem: ProductSimple): Boolean {
-            return oldItem.ID == newItem.ID
+            return oldItem.pid == newItem.pid
         }
 
         override fun areItemsTheSame(oldItem: ProductSimple, newItem: ProductSimple): Boolean {

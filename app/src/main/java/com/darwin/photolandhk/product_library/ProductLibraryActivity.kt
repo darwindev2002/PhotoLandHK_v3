@@ -24,7 +24,15 @@ class ProductLibraryActivity : AppCompatActivity() {
 //        viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
         TabLayoutMediator(tabs, viewPager) { tab, position ->
-            tab.text = "OBJECT ${position+1}"
+//            tab.text = "OBJECT ${position+1}"
+            tab.text = when (position){
+                0 -> "Camera"
+                1 -> "Lens"
+                2 -> "Filter"
+                3 -> "Tripod"
+                4 -> "Camcorder"
+                else -> "TBD"
+            }
         }.attach()
     }
 }

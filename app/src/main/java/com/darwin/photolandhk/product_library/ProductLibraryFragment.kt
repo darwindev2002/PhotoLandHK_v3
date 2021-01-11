@@ -17,8 +17,6 @@ import com.darwin.photolandhk.network.ApiStatus
 class ProductLibraryFragment(private val category: String) : Fragment() {
 
     private lateinit var binding: FragmentProductLibraryBinding
-
-    private lateinit var filterList: Array<String>
     private lateinit var viewModel: ProductLibraryViewModel
 
     override fun onCreateView(
@@ -43,10 +41,8 @@ class ProductLibraryFragment(private val category: String) : Fragment() {
             swipeLayout.isRefreshing = false
         }
 
-        binding.lifecycleOwner = this
         viewModel = ViewModelProvider(
             this,
-            // TODO: Customize category
             ProductLibraryViewModelFactory(category, binding.progressBar, binding.productRecyclerview)
         ).get(ProductLibraryViewModel::class.java)
 
@@ -77,6 +73,8 @@ class ProductLibraryFragment(private val category: String) : Fragment() {
                     linearLayoutManager.findFirstCompletelyVisibleItemPosition() == 0
             }
         })
+
+        viewModel.getProductsOverview(true)
 
         setHasOptionsMenu(true)
         return binding.root

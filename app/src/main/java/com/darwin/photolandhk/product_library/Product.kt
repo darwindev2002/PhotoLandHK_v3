@@ -1,9 +1,16 @@
 package com.darwin.photolandhk.product_library
 
 data class ProductSimple(
-    val ID: Int,
-    val post_title: String,
-    val post_date_gmt: String
+    val pid: Int,
+    val title: String,
+    val thumb: Thumb
+)
+
+data class Thumb(
+    val url: String,
+    val width: Int,
+    val height: Int,
+    val not_found: String
 )
 
 data class ProductDetailed(

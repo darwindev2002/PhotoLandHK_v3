@@ -8,12 +8,6 @@
         <variable
             name="product"
             type="com.darwin.photolandhk.product_library.ProductSimple" />
-        <variable
-            name="thm"
-            type="String" />
-        <variable
-            name="isProduct"
-            type="Boolean" />
 
     </data>
 
@@ -35,9 +29,8 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{thm}"
-                app:isProductThm="@{isProduct}"
+                android:scaleType="fitXY"
+                app:productThumb="@{product.thumb}"
                 tools:src="@drawable/logo_only_scaled"
                 android:contentDescription="@string/product_thumbnail"/>
 
@@ -57,12 +50,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
-                    app:text="@{product.post_title}"
+                    app:text="@{product.title}"
                     tools:text="SAMYANG MF 85mm f/1.4 RF"
                     android:gravity="center_vertical"/>
 
             </LinearLayout>
-
 
         </RelativeLayout>
 
